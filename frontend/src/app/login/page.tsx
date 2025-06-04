@@ -86,7 +86,7 @@ const LoginPage = () => {
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-100 rounded-full animate-ping"></div>
                 </div>
                 <h1 className="text-5xl font-bold bg-gradient-to-r from-neutral-80 to-steel-160 bg-clip-text text-transparent mb-4">
-                  Piramal ERP
+                  ExpenseFlow
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-orange-100 to-blue-100 mx-auto rounded-full"></div>
               </div>
@@ -242,7 +242,7 @@ const LoginPage = () => {
                       <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                     </svg>
                   </div>
-                  <h2 className="text-3xl font-bold text-neutral-80 mb-2">Join Piramal ERP</h2>
+                  <h2 className="text-3xl font-bold text-neutral-80 mb-2">Join ExpenseFlow</h2>
                   <p className="text-neutral-60">Create your expense portal account</p>
                 </div>
 
