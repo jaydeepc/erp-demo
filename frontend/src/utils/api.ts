@@ -1,36 +1,36 @@
-import axios from 'axios';
-
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
-// Create axios instance
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-// Add auth token to requests
-api.interceptors.request.use((config) => {
+// Helper function to make API requests
+const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
   const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+  
+  const config: RequestInit = {
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token && { Authorization: `Bearer ${token}` }),
+      ...options.headers,
+    },
+    ...options,
+  };
 
-// Handle auth errors
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+  
+  if (response.status === 401) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    if (typeof window !== 'undefined') {
       window.location.href = '/login';
     }
-    return Promise.reject(error);
   }
-);
+
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'API request failed');
+  }
+  
+  return data;
+};
 
 // Auth API
 export const authAPI = {
@@ -41,26 +41,28 @@ export const authAPI = {
     email: string;
     role?: string;
   }) => {
-    const response = await api.post('/auth/register', userData);
-    return response.data;
+    return await apiRequest('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
   },
 
   login: async (credentials: { username: string; password: string }) => {
-    const response = await api.post('/auth/login', credentials);
-    return response.data;
+    return await apiRequest('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+    });
   },
 
   verify: async () => {
-    const response = await api.get('/auth/verify');
-    return response.data;
+    return await apiRequest('/auth/verify');
   },
 };
 
 // User API
 export const userAPI = {
   getMe: async () => {
-    const response = await api.get('/users/me');
-    return response.data;
+    return await apiRequest('/users/me');
   },
 };
 
@@ -73,31 +75,35 @@ export const expenseAPI = {
     description: string;
     expenseDate: string;
   }) => {
-    const response = await api.post('/expenses', expenseData);
-    return response.data;
+    return await apiRequest('/expenses', {
+      method: 'POST',
+      body: JSON.stringify(expenseData),
+    });
   },
 
   getMyExpenses: async () => {
-    const response = await api.get('/expenses/my');
-    return response.data;
+    return await apiRequest('/expenses/my');
   },
 
   // Manager endpoints
   getPendingExpenses: async (userId?: string) => {
     const url = userId ? `/expenses/pending?userId=${userId}` : '/expenses/pending';
-    const response = await api.get(url);
-    return response.data;
+    return await apiRequest(url);
   },
 
   approveExpense: async (expenseId: string, comments?: string) => {
-    const response = await api.put(`/expenses/${expenseId}/approve`, { comments });
-    return response.data;
+    return await apiRequest(`/expenses/${expenseId}/approve`, {
+      method: 'PUT',
+      body: JSON.stringify({ comments }),
+    });
   },
 
   rejectExpense: async (expenseId: string, comments?: string) => {
-    const response = await api.put(`/expenses/${expenseId}/reject`, { comments });
-    return response.data;
+    return await apiRequest(`/expenses/${expenseId}/reject`, {
+      method: 'PUT',
+      body: JSON.stringify({ comments }),
+    });
   },
 };
 
-export default api;
+export default { authAPI, userAPI, expenseAPI };
