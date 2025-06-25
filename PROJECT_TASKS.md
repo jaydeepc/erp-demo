@@ -1,7 +1,7 @@
-# Piramal Finance ERP System - Task Progression
+# ExpenseFlow ERP System - Task Progression
 
 ## Overview
-This document outlines the 5-task implementation plan for the Piramal Finance ERP system and tracks the completion status of each task. The project was built incrementally, with each task building upon the previous one.
+This document outlines the 5-task implementation plan for the ExpenseFlow ERP system and tracks the completion status of each task. The project was built incrementally, with each task building upon the previous one.
 
 ## 5-Task Implementation Plan
 
@@ -10,10 +10,10 @@ This document outlines the 5-task implementation plan for the Piramal Finance ER
 **Deliverable**: Complete project structure with working login/register system
 
 **Implementation Details**:
-- ✅ Set up Next.js frontend with Tailwind CSS and Piramal color palette
+- ✅ Set up Next.js frontend with Tailwind CSS and modern color palette
 - ✅ Set up Express.js backend with MongoDB connection
 - ✅ Implement JWT authentication (register, login, logout)
-- ✅ Create basic login page with Piramal Finance design
+- ✅ Create basic login page with modern design
 - ✅ Configure project structure with proper directories
 
 **Files Created/Modified**:
@@ -35,7 +35,7 @@ This document outlines the 5-task implementation plan for the Piramal Finance ER
 
 **Implementation Details**:
 - ✅ Create employee dashboard with navigation
-- ✅ Implement "My Claims" page with table view using Piramal design
+- ✅ Implement "My Claims" page with table view using modern design
 - ✅ Add status badges (Pending, Approved, Rejected)
 - ✅ Connect to backend API for fetching user's expenses
 
@@ -56,7 +56,7 @@ This document outlines the 5-task implementation plan for the Piramal Finance ER
 
 **Implementation Details**:
 - ✅ Create expense submission form with validation
-- ✅ Implement form styling per Piramal design specifications
+- ✅ Implement form styling per modern design specifications
 - ✅ Add success notifications and error handling
 - ✅ Connect to backend API for expense creation
 
@@ -77,7 +77,7 @@ This document outlines the 5-task implementation plan for the Piramal Finance ER
 **Implementation Details**:
 - ✅ Create manager dashboard with pending claims view
 - ✅ Implement approve/reject functionality with comment system
-- ✅ Add confirmation dialogs with Piramal styling
+- ✅ Add confirmation dialogs with modern styling
 - ✅ Connect to backend APIs for manager operations
 
 **Files Created/Modified**:
@@ -159,7 +159,7 @@ This document outlines the 5-task implementation plan for the Piramal Finance ER
 - **Pages**: Login, Dashboard with role-based views
 - **API Routes**: Next.js API routes for backend integration
 - **Context**: Authentication context for global state
-- **Styling**: Tailwind CSS with Piramal design system
+- **Styling**: Tailwind CSS with modern design system
 - **Testing**: Component and context testing
 
 ### Database Schema
@@ -170,7 +170,7 @@ This document outlines the 5-task implementation plan for the Piramal Finance ER
 
 ## Current Status: ✅ ALL TASKS COMPLETED
 
-The Piramal Finance ERP system has been successfully implemented with all 5 tasks completed. The system includes:
+The ExpenseFlow ERP system has been successfully implemented with all 5 tasks completed. The system includes:
 
 1. Complete authentication system
 2. Employee expense management
