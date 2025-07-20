@@ -1,101 +1,62 @@
-# Cline Rules for Next.js Project
+# General Coding Practices & Standards
 
-## Project Structure
+## Test-Driven Development (TDD)
+You must follow a Test-Driven Development approach. Before implementing a feature, you should first think of and generate the unit tests that will provide desired coverage to test that particular feature. Write the failing tests, then implement the code to make them pass.
 
-- This is a Next.js application written in TypeScript
-- Uses component-based architecture with business, UI, and HR components
-- Implements CSS modules for styling (files in src/styles/)
-- Follows hook-based patterns for state management
-- Uses context for global state
-- Organized into logical directories: components, hooks, context, service, utils
+## File Creation
+When you are asked to create a new component or a service, you MUST also create its corresponding test file at the same time, in the appropriate test directory.
 
-## Code Style
+## JSDoc for Documentation
+Every exported function or class method MUST have a JSDoc comment block explaining its purpose, parameters, and return value. Include @param tags for parameters, @returns for return values, and @throws for potential errors.
 
-- If you cant find the appropriate repository required by the task, just conclude the task.
-- Follow TypeScript best practices and type everything appropriately
+## Code Quality Standards
+
+- If you can't find the appropriate repository required by the task, just conclude the task
+- Follow language-specific best practices and type everything appropriately
 - Maximum line length is 120 characters
 - Maximum file length is 300 lines excluding comments and blank lines
-- Use single quotes for JSX attributes and strings
-- Use double quotes for HTML attributes and in CSS
-- Component props should be properly typed with interfaces
-- Follow React functional component patterns with proper typing:
-
-  ```tsx
-  type ComponentProps = {
-    prop1: string;
-    prop2?: number;
-  };
-
-  const Component: React.FC<ComponentProps> = ({ prop1, prop2 }) => {
-    // implementation
-  };
-  ```
+- Keep functions and methods focused on a single responsibility
+- Follow SOLID principles
+- Handle errors gracefully with proper error handling
+- Use async/await pattern for asynchronous operations
+- Write meaningful variable and function names that describe their purpose
 
 ## File Organization
 
-- One component per file
-- Component file names should be PascalCase
-- Utility/hook file names should be camelCase
-- CSS module files should match component names
+- One main component/class per file
 - Keep related files close together
-- Use named exports for utilities and hooks
-- Use default exports for components
+- Use consistent naming conventions across the project
+- Organize imports logically: external libraries first, then internal modules
+- Group related functionality into appropriate directories
 
-## Path Imports
+## Error Handling
 
-- Use the @/ alias for src/ directory imports
-- Example: `import Component from "@/components/Component"`
-- Import order: React, Next.js, external libraries, internal components, styles
+- Always handle potential errors in async operations
+- Use try-catch blocks appropriately
+- Provide meaningful error messages
+- Log errors with sufficient context for debugging
+- Return appropriate HTTP status codes for API endpoints
 
-## Component Guidelines
+## Security Best Practices
 
-- Use functional components with hooks
-- Create small, reusable components
-- Separate business logic from UI components
-- Use proper React hook patterns (useState, useEffect, custom hooks)
-- Always include accessibility attributes (aria-\*)
-- Handle loading and error states appropriately
+- Validate all input data
+- Sanitize user inputs to prevent injection attacks
+- Use proper authentication and authorization
+- Never expose sensitive information in logs or error messages
+- Follow principle of least privilege
 
-## Styling
+## Performance Considerations
 
-- Use CSS modules for component styling
-- Keep styles close to components
-- Follow responsive design principles
-- Use Tailwind CSS classes when appropriate
+- Avoid unnecessary database queries
+- Use appropriate data structures for the task
+- Consider caching for frequently accessed data
+- Optimize loops and recursive functions
+- Use pagination for large data sets
 
-## Images & Assets
+## Code Review Standards
 
-- Store SVG images in public/images/svg/ directory
-- Use the centralized images utility (src/utils/images.ts) for accessing images
-- Reference images via the import: `import images from "@/utils/images"`
-- Follow the established pattern for adding new images:
-
-  ```ts
-  // Define the path at the top of the file
-  const newIcon = `${imagePath}svg/new-icon.svg`;
-
-  // Add to the images object
-  const images = {
-    // existing properties
-    newIcon,
-    // or add to nested category
-    category: {
-      // existing category properties
-      newIcon,
-    },
-  };
-  ```
-
-- Organize images into logical groups (login, documents, feedback, etc.)
-- Use SVG format for icons and UI elements when possible
-
-## Code Quality
-
-- Follow SOLID principles
-- Write unit tests for components and utilities
-- Avoid prop drilling, use context or custom hooks
-- Handle errors gracefully
-- Use async/await pattern for asynchronous operations
-- Keep components and functions focused on a single responsibility
-- Use TypeScript to prevent runtime errors
-- Make sure to not have any active and fixable problems in the problems tab
+- Code should be self-documenting with clear variable names
+- Complex logic should have explanatory comments
+- All public APIs should have comprehensive documentation
+- Tests should cover edge cases and error scenarios
+- Follow the established patterns in the existing codebase
