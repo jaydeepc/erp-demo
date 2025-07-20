@@ -19,8 +19,8 @@ Make sure you create regular commits by asking the user at the logical end of a 
 
 2. **Create a New Branch / Pull if already exists**
    - Establish a new branch using the naming convention:  
-     `feature|bug|hotfix_JiraTicket_ID`  
-     _Example:_ `feature_AP-1234`
+     `feature|bug|hotfix_description`  
+     _Example:_ `feature_expense-approval-workflow`
    - Check whether this new branch exists on github, if it exists then checkout to that and start working, else create new branch
 
 3. **Plan Before Coding**
@@ -43,8 +43,8 @@ Make sure you create regular commits by asking the user at the logical end of a 
 
 7. **Commit Your Changes**
    - Follow the commit message format:  
-     `JiraTicket_ID: Brief commit message`  
-     _Example:_ `AP-1234: Updated authentication logic`
+     `Brief descriptive commit message`  
+     _Example:_ `Add expense approval workflow functionality`
 
 8. **Push the Branch**
    - Push your committed changes to the remote repository
